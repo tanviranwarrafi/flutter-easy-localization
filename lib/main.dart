@@ -1,33 +1,27 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:multiple_language_change/localizationPage.dart';
+import 'package:flutter/material.dart';
+import 'package:tutorial/constants/data_constants.dart';
+import 'package:tutorial/di.dart';
+import 'package:tutorial/services/storage_service.dart';
+import 'package:tutorial/tutorial_app.dart';
 
-void main() {
-  runApp(
-    EasyLocalization(
-      child: MyApp(),
-      path: "assets/languages",
-      saveLocale: true,
-      supportedLocales: [
-        Locale('en', 'EN'),
-        Locale('bn', 'BN'),
-      ],
-      fallbackLocale: Locale('en', 'EN'),
-    ),
-  );
+import 'di.dart' as dependency_injection;
+import 'models/language.dart';
+
+Future<void> main() async {
+  await dependency_injection.init();
+  runApp(_runTutorialApp());
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'app_name'.tr(),
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      debugShowCheckedModeBanner: false,
-      home: LocalizationPage(),
-    );
-  }
+EasyLocalization _runTutorialApp() {
+  var langCode = sl<StorageService>().language;
+  var language = LANGUAGE_LIST.firstWhere((item) => item.codeWithCountry == langCode);
+  return EasyLocalization(
+    path: 'assets/languages',
+    fallbackLocale: FALLBACK_LANGUAGE,
+    useFallbackTranslations: true,
+    supportedLocales: SUPPORTED_LOCALES,
+    startLocale: language.locale,
+    child: TutorialApp(),
+  );
 }

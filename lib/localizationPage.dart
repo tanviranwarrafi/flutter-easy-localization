@@ -1,15 +1,9 @@
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-
-class LocalizationPage extends StatefulWidget {
+/*class LocalizationPage extends StatefulWidget {
   @override
   _LocalizationPageState createState() => _LocalizationPageState();
-}
+}*/
 
-class _LocalizationPageState extends State<LocalizationPage> {
+/*class _LocalizationPageState extends State<LocalizationPage> {
   bool switchValue = false;
 
   void switchLanguage(bool val) {
@@ -77,10 +71,7 @@ class _LocalizationPageState extends State<LocalizationPage> {
           Center(
             child: Text(
               'https_pub_dev_packages_easy_localization'.tr().toString(),
-              style: TextStyle(
-                  fontSize: 14.0,
-                  color: Colors.indigo,
-                  decoration: TextDecoration.underline),
+              style: TextStyle(fontSize: 14.0, color: Colors.indigo, decoration: TextDecoration.underline),
             ),
           ),
           SizedBox(height: 20),
@@ -199,4 +190,4 @@ class _LocalizationPageState extends State<LocalizationPage> {
       ),
     );
   }
-}
+}*/
